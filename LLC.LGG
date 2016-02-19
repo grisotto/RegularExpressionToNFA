@@ -1,0 +1,12 @@
+ S0 ->  				a | b | RegularExp Uniao_RegularExp | RegularExp B | RegularExp Estrela | Abrir RegularExp_Fechar 
+ RegularExp ->  		a | b | RegularExp Uniao_RegularExp | RegularExp B | RegularExp Estrela | Abrir RegularExp_Fechar 
+ B -> 					a | b | Inter RegularExp
+ 
+ Uniao_RegularExp -> 	Uniao RegularExp
+ RegularExp_Fechar -> 	RegularExp Fechar
+ 
+ Abrir -> 				(
+ Fechar -> 				)
+ Inter -> 				-
+ Uniao -> 				+
+ Estrela -> 			*

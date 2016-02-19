@@ -1,0 +1,12 @@
+S0 -> a | b | Expr AddOp_Term | AddOp Term | Term MulOp_Factor | Factor PowOp_Primary |  Factor Expr
+Expr -> Expr AddOp_Term | AddOp Term | Term MulOp_Factor | Factor PowOp_Primary | a | b | Factor Expr | Expr Close
+Term -> Term MulOp_Factor | Factor PowOp_Primary | a | b | Factor Expr
+Factor -> Factor PowOp_Primary | a | b | Factor Expr | (
+Primary -> a | b | Factor Expr
+AddOp -> + | -
+MulOp -> *
+AddOp_Term -> AddOp Term
+MulOp_Factor -> MulOp Factor
+PowOp_Primary -> PowOp Primary
+Close -> )
+PowOp -> ^
