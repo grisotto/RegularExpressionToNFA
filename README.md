@@ -10,9 +10,9 @@ Definicoes:
   
     "()" - subcadeia
     
-    "-" - concatenação
+    "." - concatenação
     
-    "+" - União
+    "|" - União
     
     "*" - Estrela
 

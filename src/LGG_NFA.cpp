@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <stack>          // std::stack
 #include <list>				//std::list
 using namespace std;
@@ -23,10 +24,23 @@ using namespace std;
  *
  */
 
+//definindo prioridades
+int priority(char symbol)
+{
+    switch(symbol)
+    {
+        case '(':return 0;
+        case '|':return 1; // Uniao
+        case '.':return 2; //Concatenacao
+        case '*':return 3; //estrela
+        default :return 0;
+    }
+}
+
 //Variaveis globais
 string regularExpression;
 char alfabeto[2] = {'0','1'};
-char operadores[3] = {'+', '-' , '*'};
+char operadores[3] = {'|', '.' , '*'};
 
 void InfixToPosfix(string infix){
 	//crio uma pilha vazia para guarda a Prefix
@@ -36,7 +50,7 @@ void InfixToPosfix(string infix){
 	list<int> auxList;
 
 	char aux;
-
+	string postFix;
 
 	//comeco o for varrendo cada elmento
 	// pop remove o elemento do top.
@@ -46,7 +60,7 @@ void InfixToPosfix(string infix){
 	      // cout << "Top of the stack " << pilhaPrefix.top() << endl;
 
 	 //varrendo todo o alfabeto
-	       for(int j =0; j < alfabeto.size();j++){
+	       for(int j =0; j < strlen(alfabeto);j++){
 	       if(infix[i] == alfabeto[j] ){
 	    	   // adicionando o alfabeto em uma lista
 	    	   auxList.push_back(infix[i]);
@@ -62,9 +76,12 @@ void InfixToPosfix(string infix){
 	    	   pilhaPrefix.push(infix[i]);
 
 		}else if(infix[i] == ')') {
-			aux = pilhaPrefix.pop();
+			aux = pilhaPrefix.top();
+			 pilhaPrefix.pop();
 
 		}
+
+
 
 
 
